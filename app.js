@@ -8,6 +8,7 @@ const hbs          = require('hbs');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
+
 //declare the api js file to use
 const users = require("./routes/api/users");
 const profile = require("./routes/api/profile");
