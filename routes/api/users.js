@@ -86,7 +86,7 @@ router.post("/login", (req,res) => {
                             (err, token) => {
                                 res.json({
                                     success: true,
-                                    token: "Bearer" + token
+                                    token: "Bearer " + token
                                 })
                         });
                     } else{
@@ -97,11 +97,22 @@ router.post("/login", (req,res) => {
         });
 
 
-//@route GET api/users/current
-//@des Return current user
-//@access Private
+// @route GET api/users/current
+// @des Return current user
+// @access Private
 router.get("/current", passport.authenticate("jwt", {session: false}),(req,res) =>{
-    res.json({msg:"success"})
+    console.log("hello fred");
+    res.json({
+        id: req.user.id,
+        lastname : req.user.lastname,
+        firstname: req.user.firstname,
+        email: req.user.email,
+    });
 });
+
+// router.get("/current", (req,res) => {
+//     console.log("hello abi");
+//     console.log(req.user);
+// })
 
 module.exports = router;

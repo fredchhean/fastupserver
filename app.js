@@ -21,7 +21,7 @@ const posts = require("./routes/api/posts");
 
 
 mongoose
-  .connect('mongodb://localhost/team-lancer', {useNewUrlParser: true})
+  .connect(process.env.MONGODB_URI, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -29,18 +29,21 @@ mongoose
     console.error('Error connecting to mongo', err)
   });
 
-//passport middleware
-
-//passport config
-require("./config/passport")(passport);
-
-
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
 
 const app = express();
 
+
+//passport middleware
 app.use(passport.initialize());
+
+
+//passport config
+require("./config/passport")(passport);
+
+
+
 
 
 // Middleware Setup
@@ -75,7 +78,6 @@ app.use('/', index);
 
 
 //--------------------------------- STARTING CODE ---------------------------------
-app.get('/', (req,res) => res.send("helloBB"));
 
 //use routes 
 app.use("/api/users", users);
