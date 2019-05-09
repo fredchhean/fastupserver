@@ -24,18 +24,15 @@ const ProfileSchema = new Schema({
     { personalwebsite: {type:String}},
     { other1: {type:String}},
     { other2: {type:String}},
-    { other3: {type:String}},
+    { other3: {type:String}}
   ],
   languages: {
     type:[String]
   },
   //TOCHANGE ONce we have skills schema built
-  skills : {type:[String], required:true},
+  skills : {type:Schema.types.ObjectId, ref:"skills",},
   placeofwork: {type: String},
   areaofwork: {type: String},
-  categories: {type: String},
-  competencies: {type: String},
-  email: {type: String, required: true},
   description: {type: String},
   experiences: {type: String},
   date: {type: Date, default: Date.now},
