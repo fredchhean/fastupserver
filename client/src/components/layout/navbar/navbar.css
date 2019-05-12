@@ -1,0 +1,14 @@
+nav {
+  height: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  flex-wrap: nowrap;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-left: 5%;
+  margin-right: 5%;
+  color: #86140d;
+  font-size: 15px;
+}

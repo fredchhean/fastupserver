@@ -44,7 +44,7 @@ router.post("/", passport.authenticate('jwt', {session:false}), (req,res) => {
     console.log("hellofred2");
 
     // const{errors, isValid} = validateProfileInput;
-    const{errors, isValid} = validateProfileInput;
+    const{errors, isValid} = validateProfileInput(req.body);
 
     console.log("hellofred");
 
