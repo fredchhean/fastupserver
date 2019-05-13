@@ -29,7 +29,9 @@ class Register extends Component {
       password: this.state.password,
       avatar: this.state.avatar,
     }
-    console.log(newUser);
+    axios.post("http://localhost:8000/api/users/register", newUser)
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
   }
 
 

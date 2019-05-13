@@ -9,6 +9,7 @@ const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
 const passport     = require('passport');
+const cors = require("cors")
 
 
 
@@ -37,10 +38,21 @@ const app = express();
 
 //passport middleware
 app.use(passport.initialize());
+app.use(passport.session());
 
 
 //passport config
 require("./config/passport")(passport);
+
+
+
+
+const corsOptions = {
+  credentials: true,
+  origin:  process.env.REACT_DOMAIN
+}
+
+app.use(cors(corsOptions));
 
 
 
