@@ -14,7 +14,7 @@ const ProfileSchema = new Schema({
   //   postcode: {type: Number, required:true, max:5},
   //   city: {type: Number, required:true}
   // },
-  // phonenumber:{type:Number, required: true},
+  // phonenumber:{t ype:Number, required: true},
   tagline:{type:String, required:true, default:"taglinedelamortquitue"},
   // bio:{type:String, required:true},
   onlinepresence:{
