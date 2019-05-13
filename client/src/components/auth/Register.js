@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import axios from "axios";
+import PropTypes from 'prop-types';
+import{withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import {registerUser} from "../../actions/authActions";
 
@@ -17,6 +18,12 @@ class Register extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+  componentWillReceiveProps(nextProps){
+    if(nextProps.errors){
+      this.setState({ errors: nextProps.errors });
+
+    }
+  }
 
   onChange(e){
     this.setState({[e.target.name]: e.target.value});
@@ -31,7 +38,7 @@ class Register extends Component {
       password: this.state.password,
       avatar: this.state.avatar,
     }
-    this.props.registerUser(newUser);
+    this.props.registerUser(newUser, this.props.history);
     // axios.post("http://localhost:8000/api/users/register", newUser)
     //   .then(res => console.log(res))
     //   .catch(err => console.log(err))
@@ -43,13 +50,14 @@ class Register extends Component {
     const {user} = this.props.auth;
     return (
       <div>
-        {user ? user.firstname : null}
+       
         <h1>Register</h1>
         <form onSubmit={this.onSubmit}>
         <div>
         <label> last name
         <input type="lastname" placeholder="last name" name="lastname" value={this.state.lastname}
         onChange={this.onChange}/>
+        {errors.lastname && (<div>{errors.lastname}</div>)}
         </label>
         </div>
         <div>
@@ -57,6 +65,7 @@ class Register extends Component {
 
         <input type="firstname" placeholder="first name" name="firstname" value={this.state.firstname}
         onChange={this.onChange}/>
+                {errors.firstname && (<div>{errors.firstname}</div>)}
         </label>
                 </div>
                 <div>
@@ -74,6 +83,8 @@ class Register extends Component {
 
         <input type="email" placeholder="email" name="email" value={this.state.email}
         onChange={this.onChange}/>
+                        {errors.email && (<div>{errors.email}</div>)}
+
                         </label>
 
                                 </div>
@@ -83,6 +94,8 @@ class Register extends Component {
 
         <input type="password" placeholder="password" value={this.state.password} name="password"
         onChange={this.onChange}/>
+                {errors.password && (<div>{errors.password}</div>)}
+                
                                 </label>
 
                                         </div>
@@ -95,8 +108,15 @@ class Register extends Component {
   }
 }
 
+Register.propTypes={
+  registerUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
+}
+
 const mapStateToProps = (state) => ({
-  auth: state.auth
+  auth: state.auth,
+  errors: state.errors,
 });
 
-export default connect(mapStateToProps, {registerUser})(Register);
+export default connect(mapStateToProps, {registerUser})(withRouter(Register));
