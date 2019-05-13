@@ -40,16 +40,47 @@ class Register extends Component {
       <div>
         <h1>Register</h1>
         <form onSubmit={this.onSubmit}>
+        <div>
+        <label> last name
         <input type="lastname" placeholder="last name" name="lastname" value={this.state.lastname}
         onChange={this.onChange}/>
+        </label>
+        </div>
+        <div>
+        <label>first name
+
         <input type="firstname" placeholder="first name" name="firstname" value={this.state.firstname}
         onChange={this.onChange}/>
+        </label>
+                </div>
+                <div>
+                <label>avatar
+
         <input type="avatar" placeholder="avatar name" name="avatar" value={this.state.avatar}
         onChange={this.onChange}/>
+                </label>
+
+                        </div>
+                        <div>
+                        <label>email
+
+
+
         <input type="email" placeholder="email" name="email" value={this.state.email}
         onChange={this.onChange}/>
+                        </label>
+
+                                </div>
+                                <div>
+                                <label>Password
+
+
         <input type="password" placeholder="password" value={this.state.password} name="password"
         onChange={this.onChange}/>
+                                </label>
+
+                                        </div>
+
         <input type="submit"/>
         </form>
 
