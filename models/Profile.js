@@ -17,20 +17,22 @@ const ProfileSchema = new Schema({
   // phonenumber:{type:Number, required: true},
   tagline:{type:String, required:true, default:"taglinedelamortquitue"},
   // bio:{type:String, required:true},
-  // onlinepresence:[
-  //   { linkedin: {type:String}},
-  //   { github: {type:String}},
-  //   { dribble: {type:String}},
-  //   { personalwebsite: {type:String}},
-  //   { other1: {type:String}},
-  //   { other2: {type:String}},
-  //   { other3: {type:String}}
-  // ],
+  onlinepresence:{
+     linkedin: {type:String},
+     github: {type:String},
+     dribble: {type:String},
+     personalwebsite: {type:String},
+     other1: {type:String},
+     other2: {type:String},
+     other3: {type:String}
+    }
+  ,
   // languages: {
   //   type:[String]
   // },
   // //TOCHANGE ONce we have skills schema built
   // skills : {type:Schema.Types.ObjectId, ref:"skills",},
+  skills: [{type: String}],
   // placeofwork: {type: String},
   // areaofwork: {type: String},
   // description: {type: String},
@@ -39,8 +41,8 @@ const ProfileSchema = new Schema({
   // heroexperience: [
   //   {
   //     title:{type:String, required: true},
-  //     context:{type:String, required: true},
-  //     herostory:{type:String, required: true},
+  //     // context:{type:String, required: true},
+  //     // herostory:{type:String, required: true},
   //   }
   // ],
   // availability:{type:Date},
