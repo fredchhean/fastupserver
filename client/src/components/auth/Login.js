@@ -1,4 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import {connect} from "react-redux";
+import classnames from "classnames";
+import {loginUser} from "../../actions/authActions";
 
 
 class Login extends Component {
@@ -7,18 +11,29 @@ class Login extends Component {
     this.state = {
       email: "",
       password: "",
+      errors: {}
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  componentWillReceiveProps(nextProps){
+    if(nextProps.auth.isAuthenticated){
+      this.props.history.push("/dashboard");
+    }
+    if(nextProps.errors){
+      this.setState({errors: nextProps.errors})
+    }
+  }
+
   onSubmit(e){
     e.preventDefault();
-    const user = {
+    const userData = {
       email: this.state.email,
       password: this.state.password,
-    }
-    console.log(user);
+    };
+    this.props.loginUser(userData)
+    // console.log(userData);
     // axios.post("http://localhost:8000/api/users/register", newUser)
     //   .then(res => console.log(res))
     //   .catch(err => console.log(err))
@@ -32,25 +47,38 @@ class Login extends Component {
 
   
   render() {
+    const {errors} = this.state;
+
     return (
       <div>
               <h1>login</h1>
 
         <form onSubmit={this.onSubmit}>
         <div>
-        <label>Email
-        <input type="email" placeholder="email" name="email" value={this.state.email}
+        <input type="email" 
+        className={classnames("ce que tu veux", {
+          "is-invalid": errors.email
+        })}
+        
+        placeholder="email" name="email" value={this.state.email}
         onChange={this.onChange}/>
-                        </label>
-
-                                </div>
+        {errors.email && (
+          <div className="invalid-feedback">{errors.email}</div>
+    )}
+        </div>
                                 <div>
-                                <label>Password
 
 
-        <input type="password" placeholder="password" value={this.state.password} name="password"
+        <input type="password" 
+                className={classnames(" que tu veux", {
+                  "is-invalid": errors.password
+                })}
+        placeholder="password" name="password" value={this.state.password} 
         onChange={this.onChange}/>
-                                </label>
+        {errors.password && (
+          <div className="invalid-feedback">{errors.password}</div>
+    )}
+        
 
                                         </div>
 
@@ -61,5 +89,15 @@ class Login extends Component {
   }
 }
 
+Login.propTypes = {
+  loginUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
+}
 
-export default Login;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  errors: state.errors
+});
+
+export default connect(mapStateToProps, {loginUser})(Login);
