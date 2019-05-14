@@ -8,8 +8,19 @@ import Landing from "./components/layout/landing/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import store from "./store";
+import jwt_decode from "jwt-decode";
+import setAuthToken from "./utils/setAuthToken";
+import {setCurrentUser} from "./actions/authActions";
 
-
+//Check for token
+if(localStorage.jwtToken){
+  //Set auth token header auth
+  setAuthToken(localStorage.jwtToken);
+  //decode Token and get user info and exp
+  const decoded = jwt_decode(localStorage.jwtToken);
+  //set user and isAuthenticated
+  store.dispatch(setCurrentUser(decoded));
+}
 
 
 class App extends Component {
