@@ -8,6 +8,8 @@ import Landing from "./components/layout/landing/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Dashboard from "./components/dashboard/Dashboard";
+import CreateProfile from "./components/create-profile/CreateProfile";
+
 
 import store from "./store";
 import jwt_decode from "jwt-decode";
@@ -59,6 +61,9 @@ class App extends Component {
         
         <Switch>
         <PrivateRoute exact path="/dashboard" component={Dashboard}/>
+        </Switch>
+        <Switch>
+        <PrivateRoute exact path="/create-profile" component={CreateProfile}/>
         </Switch>
 
       </div>
