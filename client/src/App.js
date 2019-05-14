@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {Provider} from "react-redux";
 import './App.css';
 
@@ -14,6 +14,8 @@ import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import {setCurrentUser,logoutUser} from "./actions/authActions";
 import {clearCurrentProfile} from "./actions/profileActions";
+
+import PrivateRoute from "./components/common/PrivateRoute";
 
 
 //Check for token
@@ -54,7 +56,10 @@ class App extends Component {
       <div className="container">
         <Route exact path="/register" component={Register}/>
         <Route exact path="/login" component={Login}/>
-        <Route exact path="/dashboard" component={Dashboard}/>
+        
+        <Switch>
+        <PrivateRoute exact path="/dashboard" component={Dashboard}/>
+        </Switch>
 
       </div>
       </div>
