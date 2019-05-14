@@ -7,10 +7,13 @@ import Navbar from "./components/layout/navbar/navbar";
 import Landing from "./components/layout/landing/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
+import Dashboard from "./components/dashboard/Dashboard";
+
 import store from "./store";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import {setCurrentUser,logoutUser} from "./actions/authActions";
+
 
 //Check for token
 if(localStorage.jwtToken){
@@ -47,6 +50,7 @@ class App extends Component {
       <div className="container">
         <Route exact path="/register" component={Register}/>
         <Route exact path="/login" component={Login}/>
+        <Route exact path="/dashboard" component={Dashboard}/>
 
       </div>
       </div>
