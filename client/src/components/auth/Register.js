@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import{withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import {registerUser} from "../../actions/authActions";
+import TextFieldGroup from "../common/TextFieldGroup";
 
 class Register extends Component {
   constructor(){
@@ -18,6 +19,13 @@ class Register extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+
+  componentDidMount(){
+    if(this.props.auth.isAuthenticated){
+      this.props.history.push("/dashboard");
+    }
+  }
+
   componentWillReceiveProps(nextProps){
     if(nextProps.errors){
       this.setState({ errors: nextProps.errors });
@@ -53,49 +61,51 @@ class Register extends Component {
        
         <h1>Register</h1>
         <form onSubmit={this.onSubmit}>
-        <div>
-        <label> last name
-        <input type="lastname" placeholder="last name" name="lastname" value={this.state.lastname}
-        onChange={this.onChange}/>
-        {errors.lastname && (<div>{errors.lastname}</div>)}
-        </label>
-        </div>
-        <div>
-        <label>first name
+        <label>lastname
 
-        <input type="firstname" placeholder="first name" name="firstname" value={this.state.firstname}
-        onChange={this.onChange}/>
-                {errors.firstname && (<div>{errors.firstname}</div>)}
-        </label>
-                </div>
-                <div>
-                <label>avatar
-
-        <input type="avatar" placeholder="avatar name" name="avatar" value={this.state.avatar}
-        onChange={this.onChange}/>
-                </label>
-
-                        </div>
-                        <div>
-                        <label>email
-
-
-
-        <input type="email" placeholder="email" name="email" value={this.state.email}
-        onChange={this.onChange}/>
-                        {errors.email && (<div>{errors.email}</div>)}
-
+        <TextFieldGroup
+          placeholder="lastname"
+          name="lastname"
+          type="lastname"
+          value={this.state.lastname}
+          onChange={this.onChange}
+          error={errors.lastname}
+        />
                         </label>
 
-                                </div>
+        <label>first name
+        <TextFieldGroup
+          placeholder="firstname"
+          name="firstname"
+          type="firstname"
+          value={this.state.firstname}
+          onChange={this.onChange}
+          error={errors.firstname}
+        />
+                </label>
+
+                        <label>email
+                        <TextFieldGroup
+          placeholder="email"
+          name="email"
+          type="email"
+          value={this.state.email}
+          onChange={this.onChange}
+          error={errors.email}
+        />
+                          
+                        </label>
+
                                 <div>
                                 <label>Password
-
-
-        <input type="password" placeholder="password" value={this.state.password} name="password"
-        onChange={this.onChange}/>
-                {errors.password && (<div>{errors.password}</div>)}
-                
+                                <TextFieldGroup
+          placeholder="password"
+          name="password"
+          type="password"
+          value={this.state.password}
+          onChange={this.onChange}
+          error={errors.password}
+        />
                                 </label>
 
                                         </div>

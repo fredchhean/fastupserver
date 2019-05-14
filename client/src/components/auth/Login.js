@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import classnames from "classnames";
 import {loginUser} from "../../actions/authActions";
+import TextFieldGroup from "../common/TextFieldGroup";
 
 
 class Login extends Component {
@@ -15,6 +16,12 @@ class Login extends Component {
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  componentDidMount(){
+    if(this.props.auth.isAuthenticated){
+      this.props.history.push("/dashboard");
+    }
   }
 
   componentWillReceiveProps(nextProps){
@@ -54,33 +61,23 @@ class Login extends Component {
               <h1>login</h1>
 
         <form onSubmit={this.onSubmit}>
-        <div>
-        <input type="email" 
-        className={classnames("ce que tu veux", {
-          "is-invalid": errors.email
-        })}
-        
-        placeholder="email" name="email" value={this.state.email}
-        onChange={this.onChange}/>
-        {errors.email && (
-          <div className="invalid-feedback">{errors.email}</div>
-    )}
-        </div>
-                                <div>
+        <TextFieldGroup
+          placeholder="email address"
+          name="email"
+          type="email"
+          value={this.state.email}
+          onChange={this.onChange}
+          error={errors.email}
+        />
+          <TextFieldGroup
+          placeholder="password"
+          name="password"
+          type="password"
+          value={this.state.password}
+          onChange={this.onChange}
+          error={errors.password}
+        />
 
-
-        <input type="password" 
-                className={classnames(" que tu veux", {
-                  "is-invalid": errors.password
-                })}
-        placeholder="password" name="password" value={this.state.password} 
-        onChange={this.onChange}/>
-        {errors.password && (
-          <div className="invalid-feedback">{errors.password}</div>
-    )}
-        
-
-                                        </div>
 
         <input type="submit"/>
         </form>

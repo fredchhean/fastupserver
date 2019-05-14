@@ -14,6 +14,7 @@ class Navbar extends Component {
     const {isAuthenticated, user} = this.props.auth;
     const authLinks = (
       <nav>
+        <Link to="/">Home</Link>
         <a href="" onClick={this.onLogoutClick.bind(this)}>< img src={user.avatar} alt={user.firstname} title="you don't have and image"/>Logout</a>
 
     </nav>
@@ -22,6 +23,7 @@ class Navbar extends Component {
 
     const guestLinks = (
       <nav>
+      <Link to="/">Home</Link>
       <Link to="/login">Login</Link>
       <Link to="/register">Register</Link>
     </nav>
@@ -30,9 +32,7 @@ class Navbar extends Component {
 
     return(
     <div>
-        <nav>
-    <Link to="/">Home</Link>
-  </nav>
+
   {isAuthenticated ? authLinks : guestLinks }
     </div>
 )
@@ -46,8 +46,6 @@ Navbar.propTypes = {
 
 const mapStateToProps = (state) => ({
   auth: state.auth
-
-
 })
 
 export default connect(mapStateToProps, {logoutUser})(Navbar);
