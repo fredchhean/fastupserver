@@ -16,7 +16,7 @@ const ProfileSchema = new Schema({
   // },
   // phonenumber:{t ype:Number, required: true},
   tagline:{type:String, required:true, default:"taglinedelamortquitue"},
-  // bio:{type:String, required:true},
+  heroexperience:{type:String},
   onlinepresence:{
      linkedin: {type:String},
      github: {type:String},

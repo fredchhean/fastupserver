@@ -118,6 +118,7 @@ router.post("/", passport.authenticate('jwt', {session:false}), (req,res) => {
     if(typeof req.body.skills !== "undefined") {
         profileFields.skills = req.body.skills.split(",");
     }
+    if(req.body.heroexperience) profileFields.heroexperience = req.body.heroexperience;
     //social
     profileFields.onlinepresence = {};
     if(req.body.linkedin) profileFields.onlinepresence.linkedin = req.body.linkedin;
