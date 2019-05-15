@@ -115,19 +115,20 @@ router.post("/", passport.authenticate('jwt', {session:false}), (req,res) => {
     if(req.body.handle) profileFields.handle = req.body.handle;
     if(req.body.title) profileFields.title = req.body.title;
     if(req.body.tagline) profileFields.tagline = req.body.tagline;
+    if(typeof req.body.languages !== "undefined") {
+        profileFields.languages = req.body.languages.split(",");
+    }
     if(typeof req.body.skills !== "undefined") {
         profileFields.skills = req.body.skills.split(",");
     }
     if(req.body.heroexperience) profileFields.heroexperience = req.body.heroexperience;
     //social
-    profileFields.onlinepresence = {};
-    if(req.body.linkedin) profileFields.onlinepresence.linkedin = req.body.linkedin;
-    if(req.body.github) profileFields.onlinepresence.github = req.body.github;
-    if(req.body.dribble) profileFields.onlinepresence.dribble = req.body.dribble;
-    if(req.body.personalwebsite) profileFields.onlinepresence.personalwebsite = req.body.personalwebsite;
-    if(req.body.other1) profileFields.onlinepresence.other1 = req.body.other1;
-    if(req.body.other2) profileFields.onlinepresence.other2 = req.body.other2;
-    if(req.body.other3) profileFields.onlinepresence.other3 = req.body.other3;
+    if(req.body.linkedin) profileFields.linkedin = req.body.linkedin;
+    if(req.body.github) profileFields.github = req.body.github;
+    if(req.body.dribble) profileFields.dribble = req.body.dribble;
+    if(req.body.personalwebsite) profileFields.personalwebsite = req.body.personalwebsite;
+    if(req.body.other1) profileFields.other1 = req.body.other1;
+
 
 
 

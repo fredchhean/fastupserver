@@ -1,5 +1,4 @@
 .top-container{
-  background-color: black;
   position: relative;
   padding-top: 100px;
   display: flex;
@@ -28,6 +27,18 @@
   background-position: contain;
   justify-items: top;
   align-items: center;
-  color: aqua;
+  color: white;
+  font-size: 2.5rem;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+
 }
-  
+
+.desclanding{
+  width: 40%;
+  padding-top: Opx;
+  margin-top: Opx;
+  text-align: center;
+  font-weight: bold;
+  position: absolute;
+  top:100px;
+}

@@ -34,8 +34,13 @@ nav {
   font-weight: bold;
 }
 
-
+.iconfonav{
+  display:flex;
+  align-items:center;
+  align-content:center;
+}
 
 Link{
     text-decoration:none; 
 }
+

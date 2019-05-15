@@ -16,6 +16,8 @@ class ProfileItem extends Component {
           <div>
             <h3>
               {profile.user.firstname}
+              {profile.user.lastname}
+
             </h3>
             <p>{profile.title} {isEmpty(profile.title) ? null : (<span>{profile.title}</span>)}</p>
             <Link to={`/profile/${profile.handle}`}>
@@ -27,6 +29,14 @@ class ProfileItem extends Component {
             {profile.skills.slice(0,10). map((skill, index) => (
               <li key={index}>
               {skill}
+              </li>
+            ))}
+          </ul>
+          <h4>Languages</h4>
+          <ul>
+            {profile.languages.slice(0,10). map((language, index) => (
+              <li key={index}>
+              {language}
               </li>
             ))}
           </ul>

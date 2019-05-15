@@ -14,8 +14,12 @@ class Landing extends Component {
     return (
       <div>
       <div className="top-container">
-        this is the contain for landing page
+      <div className="desclanding">
+      {/* <p>Lorem ipsum dolor sit,</p>
+      <p>amet consectetur adipisicing elit.</p>
+        Cum, tempora ipsa quo temporibus veniam minima soluta quasi facilis? */}
         {/* <img src={Galaxy} className="rocket"/> */}
+        </div>
 
       </div>
       <Link to="/login" className="button-landing">login</Link>

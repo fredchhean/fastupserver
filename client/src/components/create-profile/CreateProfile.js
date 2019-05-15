@@ -15,15 +15,13 @@ class CreateProfile extends Component {
       title:"",
       tagline:"",
       skills:"",
-
       linkedin: "",
       github: "",
       dribble: "",
       personalwebsite: "",
       other1: "",
-      other2: "",
-      other3: "",
       heroexperience:"",
+      languages:"",
       errors: {},
     }
     this.onChange = this.onChange.bind(this);
@@ -41,10 +39,14 @@ class CreateProfile extends Component {
     const profileData = {
       handle: this.state.handle,
       title: this.state.title,
-      handle: this.state.handle,
       tagline: this.state.tagline,
       heroexperience: this.state.heroexperience,
       linkedin: this.state.linkedin,
+      github: this.state.github,
+      dribble: this.state.dribble,
+      personalwebsite: this.state.personalwebsite,
+      other1: this.state.other1,
+      languages: this.state.languages,
       skills: this.state.skills,
     }
     this.props.createProfile(profileData, this.props.history);
@@ -90,6 +92,57 @@ class CreateProfile extends Component {
             error={errors.tagline}
             info="Your slogan as a freelance"
             />
+                        <TextFieldGroup
+            placeholder="* linkedin"
+            name="linkedin"
+            value={this.state.linkedin}
+            onChange={this.onChange}
+            error={errors.linkedin}
+            info="Your slogan as a freelance"
+            />
+                        <TextFieldGroup
+            placeholder="* github"
+            name="github"
+            value={this.state.github}
+            onChange={this.onChange}
+            error={errors.github}
+            info="Your slogan as a freelance"
+            />
+                                    <TextFieldGroup
+            placeholder="* dribble"
+            name="dribble"
+            value={this.state.dribble}
+            onChange={this.onChange}
+            error={errors.dribble}
+            info="Your slogan as a freelance"
+            />
+                                    <TextFieldGroup
+            placeholder="* personalwebsite"
+            name="personalwebsite"
+            value={this.state.personalwebsite}
+            onChange={this.onChange}
+            error={errors.personalwebsite}
+            info="Your slogan as a freelance"
+            />
+                                                <TextFieldGroup
+            placeholder="* other1"
+            name="other1"
+            value={this.state.other1}
+            onChange={this.onChange}
+            error={errors.other1}
+            info="Your slogan as a freelance"
+            />
+                                                <TextFieldGroup
+            placeholder="* languages"
+            name="languages"
+            value={this.state.languages}
+            onChange={this.onChange}
+            error={errors.languages}
+            info="Your slogan as a freelance"
+            />
+    
+            
+            
             <TextFieldGroup
             placeholder="* skills"
             name="skills"
@@ -98,14 +151,7 @@ class CreateProfile extends Component {
             error={errors.skills}
             info="Please use comma separated value, ex : html, css, design"
             />
-            <TextFieldGroup
-            placeholder="* linkedin"
-            name="linkedin"
-            value={this.state.linkedin}
-            onChange={this.onChange}
-            error={errors.linkedin}
-            info="Your slogan as a freelance"
-            />  
+
             <TextAreaFieldGroup
                         placeholder="your heroexperience"
                         name="heroexperience"

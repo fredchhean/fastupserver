@@ -10,10 +10,22 @@ class ProfileHeader extends Component {
           <img src={profile.user.avatar} alt=""/>
         </div>
         <div>
-          <h1>{profile.user.lastname}</h1>
+          <h1>{profile.user.firstname}{profile.user.lastname}</h1>
           <p>{profile.title}</p>
           <p>{profile.tagline}</p>
-          <p><a href={profile.onlinepresence.linkedin}>{profile.onlinepresence.linkedin}</a></p>
+          <p>{profile.skills}</p>
+
+          <p><a href={profile.linkedin}>{profile.linkedin}</a></p>
+          <p><a href={profile.github}>{profile.github}</a></p>
+          <p><a href={profile.dribble}>{profile.dribble}</a></p>
+          <p><a href={profile.personalwebsite}>{profile.personalwebsite}</a></p>
+          <p><a href={profile.languages}>{profile.languages}</a></p>
+          <p><a href={profile.other1}>{profile.other1}</a></p>
+          <p>{profile.heroexperience}</p>
+
+
+
+
           
         </div>
       </div>

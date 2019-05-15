@@ -21,8 +21,8 @@ class CreateProfile extends Component {
       dribble: "",
       personalwebsite: "",
       other1: "",
-      other2: "",
-      other3: "",
+      languages:"",
+
       heroexperience:"",
       errors: {},
     }
@@ -47,14 +47,17 @@ class CreateProfile extends Component {
       //if profile field doesn't exist, make empty string
       profile.title = !isEmpty(profile.title) ? profile.title: "";
       profile.tagline = !isEmpty(profile.tagline) ? profile.tagline: "";
-      profile.heroexperience = !isEmpty
-      (profile.heroexperience) ? profile.heroexperience: "";
+      profile.heroexperience = !isEmpty(profile.heroexperience) ? profile.heroexperience: "";
       profile.linkedin = !isEmpty(profile.linkedin) ? profile.linkedin: "";
+      profile.github = !isEmpty(profile.github) ? profile.github: "";
+
       profile.dribble = !isEmpty(profile.dribble) ? profile.dribble: "";
       profile.personalwebsite = !isEmpty(profile.personalwebsite) ? profile.personalwebsite: "";
       profile.other1 = !isEmpty(profile.other1) ? profile.other1: "";
-      profile.other2 = !isEmpty(profile.other2) ? profile.other2: "";
-      profile.other3 = !isEmpty(profile.other3) ? profile.other3: "";
+      const languagesCSV = profile.languages.join(",");
+
+      
+
 
       //set component fields state
       this.setState({
@@ -67,8 +70,9 @@ class CreateProfile extends Component {
         dribble: profile.dribble,
         personalwebsite: profile.personalwebsite,
         other1: profile.other1,
-        other2: profile.other2,
-        other3: profile.other3,
+        languages: languagesCSV,
+
+
         heroexperience: profile.heroexperience,
 
       })
@@ -81,10 +85,16 @@ class CreateProfile extends Component {
     const profileData = {
       handle: this.state.handle,
       title: this.state.title,
-      handle: this.state.handle,
       tagline: this.state.tagline,
       heroexperience: this.state.heroexperience,
       linkedin: this.state.linkedin,
+      github: this.state.github,
+      dribble: this.state.dribble,
+      personalwebsite: this.state.personalwebsite,
+      other1: this.state.other1,
+      languages: this.state.languages,
+
+
       skills: this.state.skills,
     }
     this.props.createProfile(profileData, this.props.history);
@@ -142,6 +152,46 @@ class CreateProfile extends Component {
             value={this.state.linkedin}
             onChange={this.onChange}
             error={errors.linkedin}
+            info="Your slogan as a freelance"
+            />  
+                        <TextFieldGroup
+            placeholder="* github"
+            name="github"
+            value={this.state.github}
+            onChange={this.onChange}
+            error={errors.github}
+            info="Your slogan as a freelance"
+            />  
+                        <TextFieldGroup
+            placeholder="* dribble"
+            name="dribble"
+            value={this.state.dribble}
+            onChange={this.onChange}
+            error={errors.dribble}
+            info="Your slogan as a freelance"
+            />  
+                        <TextFieldGroup
+            placeholder="* personalwebsite"
+            name="personalwebsite"
+            value={this.state.personalwebsite}
+            onChange={this.onChange}
+            error={errors.personalwebsite}
+            info="Your slogan as a freelance"
+            />  
+                                <TextFieldGroup
+            placeholder="* other1"
+            name="other1"
+            value={this.state.other1}
+            onChange={this.onChange}
+            error={errors.other1}
+            info="Your slogan as a freelance"
+            />  
+                                <TextFieldGroup
+            placeholder="* languages"
+            name="languages"
+            value={this.state.languages}
+            onChange={this.onChange}
+            error={errors.languages}
             info="Your slogan as a freelance"
             />  
             <TextAreaFieldGroup
