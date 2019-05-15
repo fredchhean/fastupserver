@@ -27,8 +27,11 @@ class Navbar extends Component {
     const guestLinks = (
       <nav>
       <Link to="/">Home</Link>
+      <Link to="/profiles">FastLancer Profiles</Link>
+
       <Link to="/login">Login</Link>
       <Link to="/register">Register</Link>
+
     </nav>
       
     );
