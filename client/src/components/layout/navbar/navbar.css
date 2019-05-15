@@ -6,16 +6,36 @@ body{
 nav {
   height: 3rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
   font-size: 1rem;
   flex-wrap: nowrap;
+  color: white;
+
+  text-decoration: none;
 
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   margin-left: 0px;
   margin-right: 0px;
-  color: #86140d;
-  background-color: yellow;
+  background-color: #FFFD61;
   font-size: 15px;
+  position: relative;
+  width:100%;
+  font-size: 2rem;
+  padding: 1rem;
+  margin: 0;
+}
+
+.navlink{
+  text-decoration: none;
+  margin: 2rem;
+  color: black;
+  font-weight: bold;
+}
+
+
+
+Link{
+    text-decoration:none; 
 }

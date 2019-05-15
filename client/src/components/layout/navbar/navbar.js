@@ -16,21 +16,21 @@ class Navbar extends Component {
     const {isAuthenticated, user} = this.props.auth;
     const authLinks = (
       <nav>
-        <Link to="/">Home</Link>
-        <Link to="/dashboard">Dashboard</Link>
-        <a href="" onClick={this.onLogoutClick.bind(this)}>< img src={user.avatar} alt={user.firstname} title="you don't have and image"/>Logout</a>
-
+        <Link to="/" className="navlink">Home</Link>
+        <Link to="/profiles" className="navlink">FastLancers</Link>
+        <Link to="/dashboard" className="navlink">Dashboard</Link>
+        <a href="" onClick={this.onLogoutClick.bind(this)}>< img src={user.avatar} width="30" height="30" alt={user.firstname} title="you don't have and image"/>Logout</a>
     </nav>
       
     );
 
     const guestLinks = (
       <nav>
-      <Link to="/">Home</Link>
-      <Link to="/profiles">FastLancer Profiles</Link>
+      <Link to="/" className="navlink">Home</Link>
+      <Link to="/profiles" className="navlink">FastLancer Profiles</Link>
 
-      <Link to="/login">Login</Link>
-      <Link to="/register">Register</Link>
+      <Link to="/login" className="navlink">Login</Link>
+      <Link to="/register" className="navlink">Register</Link>
 
     </nav>
       

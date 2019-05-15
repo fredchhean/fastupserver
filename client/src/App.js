@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {Provider} from "react-redux";
 import './App.css';
+import Logo from "../src/components/layout/landing/image/logo.png"
 
 import Navbar from "./components/layout/navbar/navbar";
 import Landing from "./components/layout/landing/Landing";
@@ -51,12 +52,16 @@ if(localStorage.jwtToken){
 class App extends Component {
   render(){
   return (
+    <body>
     <Provider store={store}>
+      <div className="logo-container">
+      <img src={Logo} className="logo"/>
+      </div>
 
     <Router>
+
       <div>
       <Navbar />
-      <h1>MY REACT APP</h1>
       <Route exact path="/" component={Landing}/>
       <div className="container">
         <Route exact path="/register" component={Register}/>
@@ -80,6 +85,7 @@ class App extends Component {
       </div>
     </Router>
     </Provider>
+    </body>
   );
 }
 }

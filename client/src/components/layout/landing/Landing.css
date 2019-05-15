@@ -1,0 +1,33 @@
+.top-container{
+  background-color: black;
+  position: relative;
+  padding-top: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.rocket{
+  width:30%;
+  height: 30%;
+}
+
+.button-landing{
+  background-color:red;
+  margin: 10px;
+  padding: 1rem;
+  border-radius: 0.3rem;
+}
+
+.top-container{
+  background: url(./../../../img-for-landing/galaxy.png);
+  height: 500px;
+  width: 100%;
+  position: relative;
+  background-size: 100% 700px;
+  background-repeat: no-repeat;
+  background-position: contain;
+  justify-items: top;
+  align-items: center;
+  color: aqua;
+}
+  
