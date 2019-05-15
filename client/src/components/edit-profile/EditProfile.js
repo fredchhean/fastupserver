@@ -3,8 +3,9 @@ import {connect} from "react-redux";
 import PropTypes from 'prop-types';
 import TextFieldGroup from "../common/TextFieldGroup";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
-import {createProfile} from "../../actions/profileActions";
+import {createProfile, getCurrentProfile} from "../../actions/profileActions";
 import {withRouter} from "react-router-dom";
+import isEmpty from "../../validation/is-empty";
 
 class CreateProfile extends Component {
   constructor(props){
@@ -15,7 +16,6 @@ class CreateProfile extends Component {
       title:"",
       tagline:"",
       skills:"",
-
       linkedin: "",
       github: "",
       dribble: "",
@@ -29,10 +29,50 @@ class CreateProfile extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+
+  componentDidMount(){
+    this.props.getCurrentProfile();
+  }
   
   componentWillReceiveProps(nextProps){
     if(nextProps.errors){
       this.setState({errors:nextProps.errors})
+    }
+    if(nextProps.profile.profile){
+      const profile = nextProps.profile.profile;
+
+      //bring skills array back to csv
+      const skillsCSV = profile.skills.join(",");
+
+      //if profile field doesn't exist, make empty string
+      profile.title = !isEmpty(profile.title) ? profile.title: "";
+      profile.tagline = !isEmpty(profile.tagline) ? profile.tagline: "";
+      profile.heroexperience = !isEmpty
+      (profile.heroexperience) ? profile.heroexperience: "";
+      profile.linkedin = !isEmpty(profile.linkedin) ? profile.linkedin: "";
+      profile.dribble = !isEmpty(profile.dribble) ? profile.dribble: "";
+      profile.personalwebsite = !isEmpty(profile.personalwebsite) ? profile.personalwebsite: "";
+      profile.other1 = !isEmpty(profile.other1) ? profile.other1: "";
+      profile.other2 = !isEmpty(profile.other2) ? profile.other2: "";
+      profile.other3 = !isEmpty(profile.other3) ? profile.other3: "";
+
+      //set component fields state
+      this.setState({
+        handle: profile.handle,
+        title: profile.title,
+        tagline: profile.tagline,
+        skills: skillsCSV,
+        linkedin: profile.linkedin,
+        github: profile.github,
+        dribble: profile.dribble,
+        personalwebsite: profile.personalwebsite,
+        other1: profile.other1,
+        other2: profile.other2,
+        other3: profile.other3,
+        heroexperience: profile.heroexperience,
+
+      })
+
     }
   }
 
@@ -60,10 +100,8 @@ class CreateProfile extends Component {
       <div>
         <div>
           <div>
-            <h1>Create your profile</h1>
-            <p>
-              Let's get some information for your profile
-            </p>
+            <h1>Edit your profile</h1>
+
             <small>*required fields</small>
             <form onSubmit={this.onSubmit}>
             <TextFieldGroup
@@ -127,6 +165,8 @@ class CreateProfile extends Component {
 }
 
 CreateProfile.propTypes = {
+  createProfile: PropTypes.func.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
 }
@@ -136,4 +176,4 @@ const mapStateToProps = state => ({
   errors: state.errors
 })
 
-export default connect(mapStateToProps,{createProfile})(withRouter(CreateProfile));
+export default connect(mapStateToProps,{createProfile, getCurrentProfile})(withRouter(CreateProfile));
