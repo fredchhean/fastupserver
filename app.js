@@ -19,6 +19,8 @@ const cors = require("cors")
 const users = require("./routes/api/users");
 const profile = require("./routes/api/profile");
 const posts = require("./routes/api/posts");
+const files = require("./routes/api/file-router.js");
+
 
 
 mongoose
@@ -95,6 +97,7 @@ app.use('/', index);
 app.use("/api/users", users);
 app.use("/api/profile", profile);
 app.use("/api/posts", posts);
+app.use("/api/file-router", files);
  
 
 module.exports = app;

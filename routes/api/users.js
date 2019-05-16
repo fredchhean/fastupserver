@@ -41,7 +41,6 @@ router.post("/register", (req,res) => {
                 const newUser = new User({
                     lastname:req.body.lastname,
                     firstname:req.body.firstname,
-
                     email:req.body.email,
                     avatar: avatar,
                     password:req.body.password,
@@ -118,5 +117,7 @@ router.get("/current", passport.authenticate("jwt", {session: false}),(req,res) 
 //     console.log("hello abi");
 //     console.log(req.user);
 // })
+
+
 
 module.exports = router;
