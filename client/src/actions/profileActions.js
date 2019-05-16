@@ -2,10 +2,13 @@ import axios from "axios";
 
 import { GET_PROFILE, GET_PROFILES, PROFILE_LOADING, GET_ERRORS, CLEAR_CURRENT_PROFILE, SET_CURRENT_USER } from "./types";
 
+
+const BackEndUrl = process.env.REACT_APP_SERVER_DOMAIN
+
 //Get current profile
 export const getCurrentProfile = () => dispatch => {
   dispatch(setProfileLoading());
-  axios.get("http://localhost:8000/api/profile")
+  axios.get(`${BackEndUrl}/api/profile`)
     .then(res => 
       dispatch({
         type: GET_PROFILE,
@@ -21,7 +24,7 @@ export const getCurrentProfile = () => dispatch => {
 //Get profile by handle
 export const getProfileByHandle = (handle) => dispatch => {
   dispatch(setProfileLoading());
-  axios.get(`http://localhost:8000/api/profile/handle/${handle}`)
+  axios.get(`${BackEndUrl}/api/profile/handle/${handle}`)
     .then(res => 
       dispatch({
         type: GET_PROFILE,
@@ -38,7 +41,7 @@ export const getProfileByHandle = (handle) => dispatch => {
 // Create Profile
 export const createProfile = (profileData, history) => dispatch => {
   axios
-    .post("http://localhost:8000/api/profile", profileData)
+    .post(`${BackEndUrl}/api/profile`, profileData)
     .then(res => history.push("/dashboard"))
     .catch(err => 
       dispatch({
@@ -51,7 +54,7 @@ export const createProfile = (profileData, history) => dispatch => {
 export const getProfiles = () => dispatch => {
   dispatch(setProfileLoading());
     axios
-      .get("http://localhost:8000/api/profile/all")
+      .get(`${BackEndUrl}/api/profile/all`)
       .then(res =>
         dispatch({
           type: GET_PROFILES,
@@ -71,7 +74,7 @@ export const getProfiles = () => dispatch => {
 export const deleteAccount = () => dispatch => {
   if(window.confirm("Are you sure that you want to delete your account?")){
     axios
-      .delete("http://localhost:8000/api/profile")
+      .delete(`${BackEndUrl}/api/profile`)
       .then(res =>
         dispatch({
           type: SET_CURRENT_USER,

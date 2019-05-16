@@ -19,11 +19,23 @@ class Landing extends Component {
       <p>amet consectetur adipisicing elit.</p>
         Cum, tempora ipsa quo temporibus veniam minima soluta quasi facilis? */}
         {/* <img src={Galaxy} className="rocket"/> */}
+        <p className="connecttext">
+        We connect Entrepreneurs and FastLancers
+        </p>
+        <p className="textunicorns">
+        To create the futur UNICORNS
+      </p>
         </div>
 
       </div>
+      <div className="howitworkscontainer">
+      <div>szszsz</div>
+
+      </div>
+      <div>
       <Link to="/login" className="button-landing">login</Link>
     <Link to="/register" className="button-landing">sign up</Link>
+      </div>
       </div>
     )
   }

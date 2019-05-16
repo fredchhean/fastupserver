@@ -10,6 +10,14 @@
   height: 30%;
 }
 
+.textunicorns{
+  color: #FFFD61,
+}
+
+.connectext{
+  color:white,
+}
+
 .button-landing{
   background-color:red;
   margin: 10px;
@@ -19,7 +27,7 @@
 
 .top-container{
   background: url(./../../../img-for-landing/galaxy.png);
-  height: 500px;
+  height: 700px;
   width: 100%;
   position: relative;
   background-size: 100% 700px;
@@ -27,10 +35,22 @@
   background-position: contain;
   justify-items: top;
   align-items: center;
-  color: white;
-  font-size: 2.5rem;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+  font-size: 3.5rem;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: #FFFD61;
+  
 
+}
+
+.howitworkscontainer{
+  width: 80%;
+  background-color:#5992E1;
+  justify-items: center;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  font-size: 3.5rem;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .desclanding{

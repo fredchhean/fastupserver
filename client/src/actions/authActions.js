@@ -4,11 +4,13 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 
 
+//instead of typing hardcorded local host
+const BackEndUrl = process.env.REACT_APP_SERVER_DOMAIN
 
 //Register User
 export const registerUser = (userData,history) => dispatch => {
       axios
-        .post("http://localhost:8000/api/users/register", userData)
+        .post(`${BackEndUrl}/api/users/register`, userData)
         .then(res => history.push('/login'))
         .catch(err => dispatch({
           type: GET_ERRORS,
@@ -20,7 +22,7 @@ export const registerUser = (userData,history) => dispatch => {
 
 // //login - Get User Token
 export const loginUser = userData => dispatch => {
-  axios.post("http://localhost:8000/api/users/login", userData)
+  axios.post(`${BackEndUrl}/api/users/login`, userData)
     .then(res => {
       //save to localstorage
       const {token} = res.data;
